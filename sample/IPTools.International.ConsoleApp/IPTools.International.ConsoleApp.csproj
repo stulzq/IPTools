@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IPTools.Heavyweight\IPTools.International.csproj" />
+    <ProjectReference Include="..\..\src\IPTools.International\IPTools.International.csproj" />
   </ItemGroup>
 
 </Project>

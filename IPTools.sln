@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD01804A-493
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{2CBAB9C6-386B-4ABB-95C4-0A89364E6B4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.Lightweight.ConsoleApp", "sample\IPTools.Lightweight.ConsoleApp\IPTools.Lightweight.ConsoleApp.csproj", "{69B5FEAE-804F-43B3-8618-D08A959B52BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.China.ConsoleApp", "sample\IPTools.China.ConsoleApp\IPTools.China.ConsoleApp.csproj", "{69B5FEAE-804F-43B3-8618-D08A959B52BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IP2Region.Ex", "src\IP2Region.Ex\IP2Region.Ex.csproj", "{2EA0CDB8-CD6C-4903-8DD6-FEB32BEF6CD3}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.Core", "src\IPTools
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.International", "src\IPTools.International\IPTools.International.csproj", "{E6211F8A-23CA-4F7D-856F-D54905E91519}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPTools.Heavyweight.ConsoleApp", "sample\IPTools.Heavyweight.ConsoleApp\IPTools.Heavyweight.ConsoleApp.csproj", "{FF5849C3-1A57-4846-B0BF-6564F2C661BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.International.ConsoleApp", "sample\IPTools.International.ConsoleApp\IPTools.International.ConsoleApp.csproj", "{FF5849C3-1A57-4846-B0BF-6564F2C661BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
