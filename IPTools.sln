@@ -19,6 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.International", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.International.ConsoleApp", "sample\IPTools.International.ConsoleApp\IPTools.International.ConsoleApp.csproj", "{FF5849C3-1A57-4846-B0BF-6564F2C661BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A343EF0-8803-4986-92C1-D4CA7D364ADE}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		build\common.props = build\common.props
+		build\package.props = build\package.props
+		README.md = README.md
+		build\version.props = build\version.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,2 +1,3 @@
 # IPTools
-Querying location information based on IP
+Querying IP address information.
+

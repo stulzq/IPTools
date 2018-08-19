@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using IPTools.China;
 
-namespace IPTools.Lightweight.ConsoleApp
+namespace IPTools.China.ConsoleApp
 {
     class Program
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using IPTools.International;
 
-namespace IPTools.Heavyweight.ConsoleApp
+namespace IPTools.International.ConsoleApp
 {
     class Program
     {

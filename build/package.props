@@ -1,0 +1,12 @@
+<Project>
+  <PropertyGroup Label="Package">
+    <Copyright></Copyright>
+    <PackageLicenseUrl>https://github.com/stulzq/IPTools/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/stulzq/IPTools</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/stulzq/IPTools.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ip</PackageTags>
+    <Company>stulzq</Company>
+    <Authors>stulzq</Authors>
+  </PropertyGroup>
+</Project>

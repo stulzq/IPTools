@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.</Description>
   </PropertyGroup>
 
   <ItemGroup>

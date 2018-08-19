@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageProjectUrl>https://github.com/stulzq/IPTools/tree/master/src/IP2Region.Ex</PackageProjectUrl>
+    <Description>Add extensions base on https://www.nuget.org/packages/IP2Region/</Description>
+    <Authors>Rocher.Kong,stulzq</Authors>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
 </Project>
