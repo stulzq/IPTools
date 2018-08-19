@@ -1,7 +1,7 @@
 # IPTools
 Querying IP address information.
 
-## 一.IPTools.China
+## 1. IPTools.China
 
 Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.
 
@@ -42,7 +42,7 @@ No support for I18N. If you use  `IpTool.Searcher.SearchWithI18NAsync()`
 
 Single thread double for loop queries 65025 IP, takes 190 ms time.
 
-## 二. IPTools.International
+## 2. IPTools.International
 
 ### (1) Install
 
@@ -101,7 +101,18 @@ Default language is chinese(zh-CN), How to change?
 IpToolSettings.DefaultLanguage = "en";
 ````
 
-## 三. Referencing project
+## 3. ASP.NET Core Support
+
+IPTools provides an extension method for `HttpContext`.
+
+usage:
+
+````csharp
+HttpContext.GetRemoteIpInfo();
+HttpContext.GetRemoteIpInfo(headerKey); // Get ip from header if you use nginx, haproxy etc.
+````
+
+## 4. Referencing project
 
 [**ip2region**](https://github.com/lionsoul2014/ip2region) by [lionsoul2014](https://github.com/lionsoul2014).
 
