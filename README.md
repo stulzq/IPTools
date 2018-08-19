@@ -1,4 +1,4 @@
-# IPTools
+# IPTools | [中文文档](README_zh-CN.md)
 Querying IP address information.
 
 ## 1. IPTools.China
