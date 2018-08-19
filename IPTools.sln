@@ -26,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 		build\package.props = build\package.props
 		README.md = README.md
+		README_zh-CN.md = README_zh-CN.md
 		build\version.props = build\version.props
 	EndProjectSection
 EndProject
