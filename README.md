@@ -1,6 +1,10 @@
 # IPTools | [中文文档](README_zh-CN.md)
 Querying IP address information.
 
+IPTools.China: [![nuget](https://img.shields.io/nuget/v/IPTools.China?style=flat-square)](https://www.nuget.org/packages/IPTools.China/)
+
+IPTools.International: [![nuget](https://img.shields.io/nuget/v/IPTools.International?style=flat-square)](https://www.nuget.org/packages/IPTools.International/)
+
 ## 1. IPTools.China
 
 Quickly query China IP information, country, province, city and network operators. Non China IP can only query national information.
