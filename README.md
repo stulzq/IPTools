@@ -1,9 +1,9 @@
 # IPTools | [中文文档](README_zh-CN.md)
 Querying IP address information.
 
-IPTools.China: [![nuget](https://img.shields.io/nuget/v/IPTools.China?style=flat-square)](https://www.nuget.org/packages/IPTools.China/)
+IPTools.China: [![nuget](https://img.shields.io/nuget/v/IPTools.China.svg?style=flat-square)](https://www.nuget.org/packages/IPTools.China/)
 
-IPTools.International: [![nuget](https://img.shields.io/nuget/v/IPTools.International?style=flat-square)](https://www.nuget.org/packages/IPTools.International/)
+IPTools.International: [![nuget](https://img.shields.io/nuget/v/IPTools.International.svg?style=flat-square)](https://www.nuget.org/packages/IPTools.International/)
 
 ## 1. IPTools.China
 
