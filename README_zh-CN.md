@@ -1,23 +1,23 @@
 # IPTools
-Querying IP address information.
+快速查询IP信息，支持国内和国外IP信息查询，支持查询经纬度，地理位置最高支持到城市。
 
 ## 1. IPTools.China
 
-Quickly query China IP information, country, province, city and network operators. Non China IP can only query national information.
+快速查询中国IP地址信息，包含国家、省份、城市、和网络运营商。非中国IP只支持查询国家。
 
-### (1) Install
+### (1) 安装
 
 ````shell
 Install-Package IPTools.China
 ````
 
-### (2) Usage
+### (2) 使用
 
 ````shell
-IpTool.Search("your ip address");
+IpTool.Search("你的ip地址");
 ````
 
-eg.
+示例.
 
 ````csharp
 var ipinfo = IpTool.Search("171.210.12.163");
@@ -27,38 +27,38 @@ Console.WriteLine(ipinfo.City); // 成都市
 Console.WriteLine(ipinfo.NetworkOperator);// 电信
 ````
 
-### (3) Async Usage
+### (3) 异步使用
 
 ````shell
-await IpTool.Searcher.SearchAsync("your ip address")
+await IpTool.Searcher.SearchAsync("你的ip地址")
 ````
 
-### (4) I18N
+### (4) 国际化
 
-No support for I18N. If you use  `IpTool.Searcher.SearchWithI18NAsync()`
-& `IpTool.Searcher.SearchWithI18N()  `will get a exception.
+不支持国际化，如果你是用 `IpTool.Searcher.SearchWithI18NAsync()`
+& `IpTool.Searcher.SearchWithI18N()  `方法，将会发生异常。
 
-### (5) performance testing
+### (5) 性能测试
 
-Single thread double for loop queries 65025 IP, takes 190 ms time.
+单线程，双重for循环，查询65025个IP，花费190毫秒。
 
 ## 2. IPTools.International
 
-Quickly query global IP information, support multi language, country, province, city, post code, longitude and latitude. 
+快速查询全球IP信息，支持多语言，但是不支持异步调用，地理信息包括国家、省份、城市、邮政编码、纬度和精度。
 
-### (1) Install
+### (1) 安装
 
 ```shell
 Install-Package IPTools.International
 ```
 
-### (2) Usage
+### (2) 使用
 
 ````csharp
-IpTool.Search("your ip address");
+IpTool.Search("你的ip地址");
 ````
 
-eg.
+示例.
 
 ````csharp
 var ipinfo = IpTool.Search("171.210.12.163");
@@ -72,18 +72,18 @@ Console.WriteLine(ipinfo.Longitude); // 104.6667
 Console.WriteLine(ipinfo.AccuracyRadius);// 50
 ````
 
-### (3) Async Usage
+### (3) 异步使用
 
-No support. If you use  `IpTool.Searcher.SearchWithI18NAsync()`
-& `IpTool.Searcher.SearchAsync()  `will get a exception.
+不支持异步使用，如果你使用`IpTool.Searcher.SearchWithI18NAsync()`
+& `IpTool.Searcher.SearchAsync()  `方法，将会发生异常。
 
-### (4) I18N
+### (4) 国际化
 
 ````csharp
-IpTool.SearchWithI18N("your ip address");
+IpTool.SearchWithI18N("你的ip地址");
 ````
 
-eg.
+示例.
 
 ````csharp
 var ipinfo = IpTool.SearchWithI18N("171.210.12.163");
@@ -97,28 +97,28 @@ Console.WriteLine(ipinfo.Longitude); // 104.6667
 Console.WriteLine(ipinfo.AccuracyRadius);// 50
 ````
 
-Default language is chinese(zh-CN), How to change?
+默认语言为中文，如何改变？使用下面的代码进行设置。中文为 `zh-CN`，英文为`en`
 
 ````csharp
 IpToolSettings.DefaultLanguage = "en";
 ````
 
-### (5) performance testing
+### (5) 性能测试
 
-Single thread double for loop queries 65025 IP, takes 1500 ms time.
+单线程，双重for循环，查询65025个IP，花费1500毫秒。
 
-## 3. ASP.NET Core Support
+## 3. ASP.NET Core 支持
 
-IPTools provides an extension method for `HttpContext`.
+IPTools 提供了 `HttpContext`对象的扩展方法。
 
-usage:
+使用:
 
 ````csharp
 HttpContext.GetRemoteIpInfo();
-HttpContext.GetRemoteIpInfo(headerKey); // Get ip from header if you use nginx, haproxy etc.
+HttpContext.GetRemoteIpInfo(headerKey); // 从请求头获取ip地址信息，如果你使用了nginx、haproxy等代理
 ````
 
-## 4. Referencing project
+## 4. 使用的开源项目
 
 [**ip2region**](https://github.com/lionsoul2014/ip2region) by [lionsoul2014](https://github.com/lionsoul2014).
 
