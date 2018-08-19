@@ -29,5 +29,10 @@ namespace IPTools.International
         {
             return Searcher.Search(ip);
         }
+
+        public static IpInfo SearchWithI18N(string ip,string langCode="")
+        {
+            return Searcher.SearchWithI18N(ip,langCode);
+        }
     }
 }

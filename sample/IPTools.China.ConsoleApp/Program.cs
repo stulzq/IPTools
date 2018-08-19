@@ -22,10 +22,10 @@ namespace IPTools.China.ConsoleApp
             Console.WriteLine(sw.ElapsedMilliseconds);
 
             var ipinfo = IpTool.Search("171.210.12.163");
-            Console.WriteLine(ipinfo.Country);
-            Console.WriteLine(ipinfo.Province);
-            Console.WriteLine(ipinfo.City);
-            Console.WriteLine(ipinfo.NetworkOperator);
+            Console.WriteLine(ipinfo.Country); // 中国
+            Console.WriteLine(ipinfo.Province); // 四川省
+            Console.WriteLine(ipinfo.City); // 成都市
+            Console.WriteLine(ipinfo.NetworkOperator);// 电信
             Console.Read();
         }
     }
