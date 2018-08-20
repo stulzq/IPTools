@@ -20,5 +20,10 @@ namespace IPTools.Core
         /// Default Language, zh-CN or en
         /// </summary>
         public static string DefaultLanguage = "zh-CN";
+
+        /// <summary>
+        /// Only when IPTools.International and IPTools.China are applied at the same time will they take effect.
+        /// </summary>
+        public static IpSearcherType DefalutSearcherType = IpSearcherType.China;
     }
 }

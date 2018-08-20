@@ -33,8 +33,14 @@ namespace IPTools.Core
         /// </summary>
         public static readonly IIpSearcher DefaultSearcher;
 
+        /// <summary>
+        /// IPTools.China
+        /// </summary>
         public static readonly IIpSearcher IpChinaSearcher;
 
+        /// <summary>
+        /// IPTools.International
+        /// </summary>
         public static readonly IIpSearcher IpAllSearcher;
 
         static IpTool()
@@ -54,6 +60,10 @@ namespace IPTools.Core
             if (IpChinaSearcher == null && IpAllSearcher == null)
             {
                 throw new IpToolException("Can not load any IpSearcher.");
+            }
+            else if (IpChinaSearcher != null && IpAllSearcher != null)
+            {
+                DefaultSearcher = IpToolSettings.DefalutSearcherType == IpSearcherType.International ? IpAllSearcher : IpChinaSearcher;
             }
             else if (IpChinaSearcher != null)
             {
