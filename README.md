@@ -95,7 +95,7 @@ Default language is chinese(zh-CN), How to change?
 IpToolSettings.DefaultLanguage = "en";// set default language is english.
 ````
 
-### (5) performance testing
+### (4) performance testing
 
 Single thread double for loop queries 65025 IP, takes 1500 ms time.
 
