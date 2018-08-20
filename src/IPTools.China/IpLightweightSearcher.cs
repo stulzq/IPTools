@@ -4,7 +4,7 @@
 // 
 // FileName：IpLightweightSearcher.cs
 // 
-// Project：IPTools.Lightweight
+// Project：IPTools.China
 // 
 // CreateDate：2018/08/19
 // 
@@ -46,24 +46,6 @@ namespace IPTools.China
         }
 
         public IpInfo SearchWithI18N(string ip, string langCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IpInfo> SearchAsync(string ip)
-        {
-            if (string.IsNullOrEmpty(ip))
-            {
-                throw new ArgumentException(nameof(ip));
-            }
-
-            var dataBlack = await _search.MemorySearchAsync(ip).ConfigureAwait(false);
-            var ipinfo = RegionStrToIpInfo(dataBlack.Region);
-            ipinfo.IpAddress = ip;
-            return ipinfo;
-        }
-
-        public Task<IpInfo> SearchWithI18NAsync(string ip, string langCode)
         {
             throw new NotImplementedException();
         }

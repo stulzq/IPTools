@@ -12,14 +12,12 @@
 // 
 // #endregion
 
-using System.Threading.Tasks;
-
 namespace IPTools.Core
 {
     public interface IIpSearcher
     {
         IpInfo Search(string ip);
 
-        IpInfo SearchWithI18N(string ip,string langCode);
+        IpInfo SearchWithI18N(string ip,string langCode="");
     }
 }

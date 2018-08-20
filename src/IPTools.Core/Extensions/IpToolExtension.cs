@@ -4,7 +4,7 @@
 // 
 // FileName：IpToolExtension.cs
 // 
-// Project：IPTools.Heavyweight
+// Project：IPTools.Core
 // 
 // CreateDate：2018/08/19
 // 
@@ -12,10 +12,9 @@
 // 
 // #endregion
 
-using IPTools.Core;
 using Microsoft.AspNetCore.Http;
 
-namespace IPTools.International.Extensions
+namespace IPTools.Core.Extensions
 {
     public static class IpToolExtension
     {

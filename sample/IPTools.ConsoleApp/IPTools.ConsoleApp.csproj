@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\IPTools.China\IPTools.China.csproj" />
     <ProjectReference Include="..\..\src\IPTools.International\IPTools.International.csproj" />
   </ItemGroup>
 

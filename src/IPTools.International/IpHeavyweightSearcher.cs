@@ -4,7 +4,7 @@
 // 
 // FileName：IpHeavyweightSearcher.cs
 // 
-// Project：IPTools.Heavyweight
+// Project：IPTools.International
 // 
 // CreateDate：2018/08/19
 // 
@@ -14,7 +14,6 @@
 
 using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using IPTools.Core;
 using MaxMind.GeoIP2;
 
@@ -95,16 +94,6 @@ namespace IPTools.International
             {
                 return new IpInfo();
             }
-        }
-
-        public Task<IpInfo> SearchAsync(string ip)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IpInfo> SearchWithI18NAsync(string ip, string langCode)
-        {
-            throw new NotImplementedException();
         }
 
         public void Dispose()
