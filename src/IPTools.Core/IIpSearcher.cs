@@ -21,15 +21,5 @@ namespace IPTools.Core
         IpInfo Search(string ip);
 
         IpInfo SearchWithI18N(string ip,string langCode);
-
-        Task<IpInfo> SearchAsync(string ip);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="langCode">eg. zh-CN, en.</param>
-        /// <returns></returns>
-        Task<IpInfo> SearchWithI18NAsync(string ip, string langCode);
     }
 }
