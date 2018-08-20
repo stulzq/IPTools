@@ -2,7 +2,7 @@
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Quickly query global IP information, support multi lingual, national, provincial, city, longitude and latitude.</Description>
+    <Description>Quickly query global IP information, support multi lingual, national, provincial, city, longitude and latitude.Docs: https://github.com/stulzq/IPTools. </Description>
   </PropertyGroup>
 
   <ItemGroup>

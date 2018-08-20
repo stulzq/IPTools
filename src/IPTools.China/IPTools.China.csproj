@@ -2,7 +2,7 @@
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.</Description>
+    <Description>Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.Docs: https://github.com/stulzq/IPTools. </Description>
   </PropertyGroup>
 
   <ItemGroup>
