@@ -37,7 +37,7 @@ Not support . So you can't use `IpTool.SearchWithI18NAsync()`.
 
 ### (4) performance testing
 
-Single thread double for loop queries 65025 IP, takes 170 ms time.
+Single thread double for loop queries 65025 IP, takes 170 ms.
 
 ## 2. IPTools.International
 
@@ -97,7 +97,7 @@ IpToolSettings.DefaultLanguage = "en";// set default language is english.
 
 ### (4) performance testing
 
-Single thread double for loop queries 65025 IP, takes 1500 ms time.
+Single thread double for loop queries 65025 IP, takes 1500 ms.
 
 ## 3. ASP.NET Core Support
 
