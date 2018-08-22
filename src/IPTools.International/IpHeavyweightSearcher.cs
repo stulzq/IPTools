@@ -39,7 +39,7 @@ namespace IPTools.International
 #endif
             if (!File.Exists(dbPath))
             {
-                throw new IpToolException($"IPTools.International initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: ");
+                throw new IpToolException($"IPTools.International initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: https://github.com/stulzq/IPTools/raw/master/db/GeoLite2-City.mmdb");
             }
 
             if (IpToolSettings.LoadInternationalDbToMemory)

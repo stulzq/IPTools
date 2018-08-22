@@ -37,7 +37,7 @@ namespace IPTools.China
 #endif
             if (!File.Exists(dbPath))
             {
-                throw new IpToolException($"IPTools.China initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: ");
+                throw new IpToolException($"IPTools.China initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: https://github.com/stulzq/IPTools/raw/master/db/ip2region.db");
             }
 
             _search = new DbSearcher(dbPath);
