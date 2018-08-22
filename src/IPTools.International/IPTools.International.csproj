@@ -22,9 +22,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="GeoLite2-City.mmdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <DbFiles Include="..\..\db\*.mmdb" />
   </ItemGroup>
+
+  <!--link reference-->
+  <ItemGroup>
+    <Content Include="@(DbFiles)" Condition="Exists(@(DbFiles))">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>True</Visible>
+      <Link>%(FileName).mmdb</Link>
+    </Content>
+  </ItemGroup>
+
+  <!--Copy bb files before build to out dir-->
+  <Target Name="CopyDbFilesBeforeBuild" AfterTargets="BeforeBuild">
+    <Copy SourceFiles="@(DbFiles)" DestinationFolder="$(OutDir)" />
+  </Target>
+
+  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+    <Copy SourceFiles="@(DbFiles)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="false" />
+  </Target>
 
 </Project>
