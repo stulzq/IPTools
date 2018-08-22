@@ -1,10 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45;net451;net452;net461</TargetFrameworks>
     <Description>The IPtools abstraction layer can not be used alone.</Description>
   </PropertyGroup>
-  <ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net452' OR '$(TargetFramework)' == 'net451' OR '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net461'">
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
   </ItemGroup>
 

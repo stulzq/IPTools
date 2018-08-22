@@ -12,7 +12,12 @@
 // 
 // #endregion
 
+
+#if NETSTANDARD2_0
 using Microsoft.AspNetCore.Http;
+#else
+using System.Web;
+#endif
 
 namespace IPTools.Core.Extensions
 {
@@ -20,7 +25,12 @@ namespace IPTools.Core.Extensions
     {
         public static IpInfo GetRemoteIpInfo(this HttpContext context)
         {
+#if NETSTANDARD2_0
+            
             return IpTool.Search(context.Connection.RemoteIpAddress.ToString());
+#else
+            return IpTool.Search(context.Request.UserHostAddress);
+#endif
         }
 
         /// <summary>

@@ -13,10 +13,11 @@
 // #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+#if !NETSTANDARD2_0
+using System.Web;
+#endif
 using IPTools.Core.Exception;
 
 namespace IPTools.Core
@@ -45,6 +46,9 @@ namespace IPTools.Core
 
         static IpTool()
         {
+            try
+            {
+#if NETSTANDARD2_0
             if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpCnAsmName+".dll")))
             {
                 var ipCnAsm = Assembly.Load(IpCnAsmName);
@@ -56,23 +60,62 @@ namespace IPTools.Core
                 var ipAllAsm = Assembly.Load(IpAllAsmName);
                 IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
             }
+#else
 
-            if (IpChinaSearcher == null && IpAllSearcher == null)
-            {
-                throw new IpToolException("Can not load any IpSearcher.");
+                #region China
+
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IpCnAsmName + ".dll"))) //netfx console
+                {
+                    var ipCnAsm = Assembly.Load(IpCnAsmName);
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                }
+                else if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", IpCnAsmName + ".dll")))  // netfx asp.net
+                {
+                    var ipCnAsm = Assembly.Load(IpCnAsmName);
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                }
+
+                #endregion
+
+                #region All
+
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IpAllAsmName + ".dll"))) //netfx console
+                {
+                    var ipAllAsm = Assembly.Load(IpAllAsmName);
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                }
+                else if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", IpAllAsmName + ".dll")))  // netfx asp.net
+                {
+                    var ipAllAsm = Assembly.Load(IpAllAsmName);
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                }
+
+                #endregion
+#endif
+
+
+                if (IpChinaSearcher == null && IpAllSearcher == null)
+                {
+                    throw new IpToolException("Can not load any IpSearcher.");
+                }
+                else if (IpChinaSearcher != null && IpAllSearcher != null)
+                {
+                    DefaultSearcher = IpToolSettings.DefalutSearcherType == IpSearcherType.International ? IpAllSearcher : IpChinaSearcher;
+                }
+                else if (IpChinaSearcher != null)
+                {
+                    DefaultSearcher = IpChinaSearcher;
+                }
+                else
+                {
+                    DefaultSearcher = IpAllSearcher;
+                }
             }
-            else if (IpChinaSearcher != null && IpAllSearcher != null)
+            catch (System.Exception e)
             {
-                DefaultSearcher = IpToolSettings.DefalutSearcherType == IpSearcherType.International ? IpAllSearcher : IpChinaSearcher;
+                throw new IpToolException("IPTools initialize failed.",e);
             }
-            else if (IpChinaSearcher != null)
-            {
-                DefaultSearcher = IpChinaSearcher;
-            }
-            else
-            {
-                DefaultSearcher = IpAllSearcher;
-            }
+
         }
 
 

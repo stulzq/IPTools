@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45;net451;net452;net461</TargetFrameworks>
     <Description>Quickly query global IP information, support multi lingual, national, provincial, city, longitude and latitude.Docs: https://github.com/stulzq/IPTools. </Description>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="GeoLite2-City.mmdb" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="GeoLite2-City.mmdb" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net452' OR '$(TargetFramework)' == 'net451' OR '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net461'">
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +19,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IPTools.Core\IPTools.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="GeoLite2-City.mmdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

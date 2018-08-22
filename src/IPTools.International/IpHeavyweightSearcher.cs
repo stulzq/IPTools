@@ -13,8 +13,11 @@
 // #endregion
 
 using System;
+using System.IO;
+using System.IO.MemoryMappedFiles;
 using System.Reflection;
 using IPTools.Core;
+using IPTools.Core.Exception;
 using MaxMind.GeoIP2;
 
 namespace IPTools.International
@@ -25,9 +28,30 @@ namespace IPTools.International
 
         public IpHeavyweightSearcher()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            var dbResourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.GeoLite2-City.mmdb");
-            _search = new DatabaseReader(dbResourceStream);
+//            Assembly assembly = Assembly.GetExecutingAssembly();
+//            var dbResourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.GeoLite2-City.mmdb");
+//            _search = new DatabaseReader(dbResourceStream);
+            
+#if NETSTANDARD2_0
+            var dbPath = Path.Combine(AppContext.BaseDirectory, "GeoLite2-City.mmdb");
+#else
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GeoLite2-City.mmdb");
+#endif
+            if (!File.Exists(dbPath))
+            {
+                throw new IpToolException($"IPTools.International initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: ");
+            }
+
+            if (IpToolSettings.LoadInternationalDbToMemory)
+            {
+                MemoryMappedFile file = MemoryMappedFile.CreateFromFile(dbPath);
+                _search = new DatabaseReader(file.CreateViewStream());
+            }
+            else
+            {
+                _search = new DatabaseReader(dbPath);
+            }
+            
         }
 
         public IpInfo Search(string ip)

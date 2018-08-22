@@ -8,6 +8,9 @@ namespace IPTools.ConsoleApp
     {
         static void Main(string[] args)
         {
+            
+            IpToolSettings.LoadInternationalDbToMemory = true;
+
             Console.WriteLine("Default Searcher："+ IpTool.Search("171.210.12.163").City);
 
             Console.WriteLine("IPTools.International Searcher：" + IpTool.IpAllSearcher.Search("171.210.12.163").City);

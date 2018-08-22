@@ -1,21 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45;net451;net452;net461</TargetFrameworks>
     <Description>Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.Docs: https://github.com/stulzq/IPTools. </Description>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="ip2region.db" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="ip2region.db" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net452' OR '$(TargetFramework)' == 'net451' OR '$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net461'">
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IP2Region.Ex\IP2Region.Ex.csproj" />
     <ProjectReference Include="..\IPTools.Core\IPTools.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ip2region.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -17,7 +17,7 @@ namespace IPTools.Core
     public class IpToolSettings
     {
         /// <summary>
-        /// Default Language, zh-CN or en
+        /// Default language code, eg. zh-CN, en
         /// </summary>
         public static string DefaultLanguage = "zh-CN";
 
@@ -25,5 +25,10 @@ namespace IPTools.Core
         /// Only when IPTools.International and IPTools.China are applied at the same time will they take effect.
         /// </summary>
         public static IpSearcherType DefalutSearcherType = IpSearcherType.China;
+
+        /// <summary>
+        /// It can double the query speed. Only using IPTools.International will take effect.
+        /// </summary>
+        public static bool LoadInternationalDbToMemory = false;
     }
 }
