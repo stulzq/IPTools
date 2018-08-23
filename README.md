@@ -15,7 +15,19 @@ Quickly query China IP information, country, province, city and network operator
 Install-Package IPTools.China
 ````
 
-### (2) Usage
+### (2) Download database file
+
+```shell
+https://github.com/stulzq/IPTools/raw/master/db/ip2region.db
+```
+
+After the database file is downloaded, put it in your project root directory (same level as the *.csprj file), and **set the copy to the output directory**.
+
+![1534995762038](assets/1534995762038.png)
+
+> At the beginning of version 1.2.0, the database file was unembedded into the assembly, which is convenient for updating and reduces the size of the assembly.
+
+### (3) Usage
 
 ````shell
 IpTool.Search("your ip address");
@@ -31,11 +43,11 @@ Console.WriteLine(ipinfo.City); // 成都市
 Console.WriteLine(ipinfo.NetworkOperator);// 电信
 ````
 
-### (3) I18N
+### (4) I18N
 
 Not support . So you can't use `IpTool.SearchWithI18NAsync()`.
 
-### (4) performance testing
+### (5) performance testing
 
 Single thread double for loop queries 65025 IP, takes 170 ms.
 
@@ -49,7 +61,19 @@ Quickly query global IP information, support i18n, country, province, city, post
 Install-Package IPTools.International
 ```
 
-### (2) Usage
+### (2) Download database file
+
+```shell
+https://github.com/stulzq/IPTools/raw/master/db/GeoLite2-City.mmdb
+```
+
+After the database file is downloaded, put it in your project root directory (same level as the *.csprj file), and **set the copy to the output directory**.
+
+![1534995856116](assets/1534995856116.png)
+
+> At the beginning of version 1.2.0, the database file was unembedded into the assembly, which is convenient for updating and reduces the size of the assembly.
+
+### (3) Usage
 
 ````csharp
 IpTool.Search("your ip address");
@@ -69,7 +93,7 @@ Console.WriteLine(ipinfo.Longitude); // 104.6667
 Console.WriteLine(ipinfo.AccuracyRadius);// 50
 ````
 
-### (3) I18N
+### (4) I18N
 
 ````csharp
 IpTool.SearchWithI18N("your ip address");
@@ -95,9 +119,19 @@ Default language is chinese(zh-CN), How to change?
 IpToolSettings.DefaultLanguage = "en";// set default language is english.
 ````
 
-### (4) performance testing
+### (5) Increase query speed
 
-Single thread double for loop queries 65025 IP, takes 1500 ms.
+With the following settings,  will double the query speed, the principle is to fully load the database file into the memory, the price is that the memory will increase 60-70M, space for time, this should be noted.
+
+```csharp
+IpToolSettings.LoadInternationalDbToMemory = true;
+```
+
+> Version >= 1.2.0
+
+### (6) performance testing
+
+Single thread double for loop queries 65025 IP, takes 1500 ms(Memory).
 
 ## 3. ASP.NET Core Support
 

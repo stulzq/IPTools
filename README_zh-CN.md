@@ -11,7 +11,18 @@
 Install-Package IPTools.China
 ````
 
-### (2) 使用
+### (2) 下载数据库文件
+
+````shell
+https://github.com/stulzq/IPTools/raw/master/db/ip2region.db
+````
+将数据库文件下载完成以后，放到你的项目根目录(与*.csprj文件同级)，并**设置复制到输出目录**
+
+![1534995762038](assets/1534995762038.png)
+
+
+>1.2.0版本开始就取消了将数据库文件嵌入到程序集，方便更新，且减少程序集大小。
+### (3) 使用
 
 ````shell
 IpTool.Search("你的ip地址");
@@ -27,11 +38,11 @@ Console.WriteLine(ipinfo.City); // 成都市
 Console.WriteLine(ipinfo.NetworkOperator);// 电信
 ````
 
-### (3) 国际化
+### (4) 国际化
 
 不支持国际化，所以不能使用`IpTool.SearchWithI18NAsync()`。
 
-### (4) 性能测试
+### (5) 性能测试
 
 单线程，双重for循环，查询65025个IP，花费170毫秒。
 
@@ -45,7 +56,19 @@ Console.WriteLine(ipinfo.NetworkOperator);// 电信
 Install-Package IPTools.International
 ```
 
-### (2) 使用
+### (2) 下载数据库文件
+
+```shell
+https://github.com/stulzq/IPTools/raw/master/db/GeoLite2-City.mmdb
+```
+
+将数据库文件下载完成以后，放到你的项目根目录(与*.csprj文件同级)，并**设置复制到输出目录**
+
+![1534995856116](assets/1534995856116.png)
+
+> 1.2.0版本开始就取消了将数据库文件嵌入到程序集，方便更新，且减少程序集大小。
+
+### (3) 使用
 
 ````csharp
 IpTool.Search("你的ip地址");
@@ -65,7 +88,7 @@ Console.WriteLine(ipinfo.Longitude); // 104.6667
 Console.WriteLine(ipinfo.AccuracyRadius);// 50
 ````
 
-### (3) 国际化
+### (4) 国际化
 
 ````csharp
 IpTool.SearchWithI18N("你的ip地址");
@@ -91,9 +114,19 @@ Console.WriteLine(ipinfo.AccuracyRadius);// 50
 IpToolSettings.DefaultLanguage = "en";
 ````
 
-### (4) 性能测试
+### (5) 提升查询速度
 
-单线程，双重for循环，查询65025个IP，花费1500毫秒。
+通过以下设置，将会**提升一倍的查询速度**，其原理是将数据库文件完全加载到内存，付出的代价是内存将会增加60-70M，以空间换时间，这点需要注意。
+
+````csharp
+IpToolSettings.LoadInternationalDbToMemory = true;
+````
+
+> 版本要求 >= 1.2.0
+
+### (6) 性能测试
+
+单线程，双重for循环，查询65025个IP，花费1500毫秒（Memory）。
 
 ## 3. ASP.NET Core 支持
 
