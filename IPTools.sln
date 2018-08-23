@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.China", "src\IPTools.China\IPTools.China.csproj", "{000D6998-5162-441A-9D46-0AE0C3B065B0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CD01804A-493A-4931-BC22-BA5C8E595F27}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 src", "02 src", "{CD01804A-493A-4931-BC22-BA5C8E595F27}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{2CBAB9C6-386B-4ABB-95C4-0A89364E6B4A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 sample", "03 sample", "{2CBAB9C6-386B-4ABB-95C4-0A89364E6B4A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.ConsoleApp", "sample\IPTools.ConsoleApp\IPTools.ConsoleApp.csproj", "{69B5FEAE-804F-43B3-8618-D08A959B52BD}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.Core", "src\IPTools
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTools.International", "src\IPTools.International\IPTools.International.csproj", "{E6211F8A-23CA-4F7D-856F-D54905E91519}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A343EF0-8803-4986-92C1-D4CA7D364ADE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Solution Items", "01 Solution Items", "{8A343EF0-8803-4986-92C1-D4CA7D364ADE}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		build\common.props = build\common.props
