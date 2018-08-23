@@ -24,11 +24,11 @@
 
   <!--link reference-->
   <ItemGroup>
-    <Content Include="@(DbFiles)" Condition="Exists(@(DbFiles))">
+    <None Include="@(DbFiles)" Condition="Exists(@(DbFiles))">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>True</Visible>
       <Link>%(FileName).db</Link>
-    </Content>
+    </None>
   </ItemGroup>
 
   <!--Copy bb files before build to out dir-->
