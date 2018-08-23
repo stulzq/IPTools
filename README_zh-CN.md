@@ -114,9 +114,19 @@ Console.WriteLine(ipinfo.AccuracyRadius);// 50
 IpToolSettings.DefaultLanguage = "en";
 ````
 
-### (5) 性能测试
+### (5) 提升查询速度
 
-单线程，双重for循环，查询65025个IP，花费1500毫秒。
+通过以下设置，将会**提升一倍的查询速度**，其原理是将数据库文件完全加载到内存，付出的代价是内存将会增加60-70M，以空间换时间，这点需要注意。
+
+````csharp
+IpToolSettings.LoadInternationalDbToMemory = true;
+````
+
+> 版本要求 >= 1.2.0
+
+### (6) 性能测试
+
+单线程，双重for循环，查询65025个IP，花费1500毫秒（Memory）。
 
 ## 3. ASP.NET Core 支持
 
