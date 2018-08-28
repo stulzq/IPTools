@@ -49,17 +49,20 @@ namespace IPTools.Core
             try
             {
 #if NETSTANDARD2_0
-            if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpCnAsmName+".dll")))
-            {
-                var ipCnAsm = Assembly.Load(IpCnAsmName);
-                IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
-            }
+                var depJsonName = Path.Combine(AppContext.BaseDirectory,
+                    $"{Assembly.GetEntryAssembly().GetName().Name}.deps.json");
+                var depJsonStr = File.ReadAllText(depJsonName);
+                if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpCnAsmName + ".dll"))|| depJsonStr.Contains(IpCnAsmName))
+                {
+                    var ipCnAsm = Assembly.Load(IpCnAsmName);
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                }
 
-            if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpAllAsmName + ".dll")))
-            {
-                var ipAllAsm = Assembly.Load(IpAllAsmName);
-                IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
-            }
+                if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpAllAsmName + ".dll"))|| depJsonStr.Contains(IpAllAsmName))
+                {
+                    var ipAllAsm = Assembly.Load(IpAllAsmName);
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                }
 #else
 
                 #region China
@@ -113,7 +116,7 @@ namespace IPTools.Core
             }
             catch (System.Exception e)
             {
-                throw new IpToolException("IPTools initialize failed.",e);
+                throw new IpToolException("IPTools initialize failed.", e);
             }
 
         }
@@ -137,9 +140,9 @@ namespace IPTools.Core
         /// <param name="ip"></param>
         /// <param name="langCode">language code.eg. zh-CN, en.</param>
         /// <returns></returns>
-        public static IpInfo SearchWithI18N(string ip,string langCode="")
+        public static IpInfo SearchWithI18N(string ip, string langCode = "")
         {
-            return DefaultSearcher.SearchWithI18N(ip,langCode);
+            return DefaultSearcher.SearchWithI18N(ip, langCode);
         }
     }
 }
