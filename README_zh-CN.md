@@ -46,6 +46,12 @@ Console.WriteLine(ipinfo.NetworkOperator);// 电信
 
 单线程，双重for循环，查询65025个IP，花费170毫秒。
 
+### (6) 自定义ip数据库文件
+
+````csharp
+IpToolSettings.ChinaDbPath="";
+````
+
 ## 2. IPTools.International
 
 快速查询全球IP信息，支持多语言，地理信息包括国家、省份、城市、邮政编码、纬度和精度。
@@ -127,6 +133,12 @@ IpToolSettings.LoadInternationalDbToMemory = true;
 ### (6) 性能测试
 
 单线程，双重for循环，查询65025个IP，花费1500毫秒（Memory）。
+
+### (7) 自定义ip数据库文件
+
+````csharp
+IpToolSettings.InternationalDbPath="";
+````
 
 ## 3. ASP.NET Core 支持
 

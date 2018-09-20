@@ -22,11 +22,11 @@ using MaxMind.GeoIP2;
 
 namespace IPTools.International
 {
-    public class IpHeavyweightSearcher:IIpSearcher,IDisposable
+    public class IpComplexSearcher:IIpSearcher
     {
         private readonly DatabaseReader _search;
 
-        public IpHeavyweightSearcher()
+        public IpComplexSearcher()
         {
 //            Assembly assembly = Assembly.GetExecutingAssembly();
 //            var dbResourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.GeoLite2-City.mmdb");
@@ -37,6 +37,10 @@ namespace IPTools.International
 #else
             var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GeoLite2-City.mmdb");
 #endif
+            if (!string.IsNullOrEmpty(IpToolSettings.InternationalDbPath))
+            {
+                dbPath = IpToolSettings.InternationalDbPath;
+            }
             if (!File.Exists(dbPath))
             {
                 throw new IpToolException($"IPTools.International initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: https://github.com/stulzq/IPTools/raw/master/db/GeoLite2-City.mmdb");
@@ -118,11 +122,6 @@ namespace IPTools.International
             {
                 return new IpInfo();
             }
-        }
-
-        public void Dispose()
-        {
-            _search?.Dispose();
         }
     }
 }

@@ -21,11 +21,11 @@ using IPTools.Core.Exception;
 
 namespace IPTools.China
 {
-    public class IpLightweightSearcher:IIpSearcher,IDisposable
+    public class IpSimpleSearcher:IIpSearcher
     {
         private readonly DbSearcher _search;
 
-        public IpLightweightSearcher()
+        public IpSimpleSearcher()
         {
             /*Assembly assembly = Assembly.GetExecutingAssembly();
             var dbResourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.ip2region.db");
@@ -35,6 +35,10 @@ namespace IPTools.China
 #else
             var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ip2region.db");
 #endif
+            if (!string.IsNullOrEmpty(IpToolSettings.ChinaDbPath))
+            {
+                dbPath = IpToolSettings.ChinaDbPath;
+            }
             if (!File.Exists(dbPath))
             {
                 throw new IpToolException($"IPTools.China initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: https://github.com/stulzq/IPTools/raw/master/db/ip2region.db");
