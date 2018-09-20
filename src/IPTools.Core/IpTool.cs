@@ -55,13 +55,13 @@ namespace IPTools.Core
                 if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpCnAsmName + ".dll"))|| depJsonStr.Contains(IpCnAsmName))
                 {
                     var ipCnAsm = Assembly.Load(IpCnAsmName);
-                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpSimpleSearcher");
                 }
 
                 if (File.Exists(Path.Combine(AppContext.BaseDirectory, IpAllAsmName + ".dll"))|| depJsonStr.Contains(IpAllAsmName))
                 {
                     var ipAllAsm = Assembly.Load(IpAllAsmName);
-                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpComplexSearcher");
                 }
 #else
 
@@ -70,12 +70,12 @@ namespace IPTools.Core
                 if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IpCnAsmName + ".dll"))) //netfx console
                 {
                     var ipCnAsm = Assembly.Load(IpCnAsmName);
-                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpSimpleSearcher");
                 }
                 else if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", IpCnAsmName + ".dll")))  // netfx asp.net
                 {
                     var ipCnAsm = Assembly.Load(IpCnAsmName);
-                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpLightweightSearcher");
+                    IpChinaSearcher = (IIpSearcher)ipCnAsm.CreateInstance("IPTools.China.IpSimpleSearcher");
                 }
 
                 #endregion
@@ -85,12 +85,12 @@ namespace IPTools.Core
                 if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, IpAllAsmName + ".dll"))) //netfx console
                 {
                     var ipAllAsm = Assembly.Load(IpAllAsmName);
-                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpComplexSearcher");
                 }
                 else if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bin", IpAllAsmName + ".dll")))  // netfx asp.net
                 {
                     var ipAllAsm = Assembly.Load(IpAllAsmName);
-                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpHeavyweightSearcher");
+                    IpAllSearcher = (IIpSearcher)ipAllAsm.CreateInstance("IPTools.International.IpComplexSearcher");
                 }
 
                 #endregion

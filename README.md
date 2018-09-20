@@ -51,6 +51,12 @@ Not support . So you can't use `IpTool.SearchWithI18NAsync()`.
 
 Single thread double for loop queries 65025 IP, takes 170 ms.
 
+### (6) Custom DB path
+
+````csharp
+IpToolSettings.ChinaDbPath="";
+````
+
 ## 2. IPTools.International
 
 Quickly query global IP information, support i18n, country, province, city, post code, longitude and latitude. 
@@ -132,6 +138,12 @@ IpToolSettings.LoadInternationalDbToMemory = true;
 ### (6) performance testing
 
 Single thread double for loop queries 65025 IP, takes 1500 ms(Memory).
+
+### (7) Custom DB path
+
+````csharp
+IpToolSettings.InternationalDbPath="";
+````
 
 ## 3. ASP.NET Core Support
 

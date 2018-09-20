@@ -30,5 +30,9 @@ namespace IPTools.Core
         /// It can double the query speed. Only using IPTools.International will take effect.
         /// </summary>
         public static bool LoadInternationalDbToMemory = false;
+
+        public static string ChinaDbPath = string.Empty;
+
+        public static string InternationalDbPath = string.Empty;
     }
 }
