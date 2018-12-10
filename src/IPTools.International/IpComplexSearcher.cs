@@ -24,14 +24,15 @@ namespace IPTools.International
 {
     public class IpComplexSearcher:IIpSearcher
     {
-        private readonly DatabaseReader _search;
+        private DatabaseReader _search;
 
         public IpComplexSearcher()
         {
-//            Assembly assembly = Assembly.GetExecutingAssembly();
-//            var dbResourceStream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.GeoLite2-City.mmdb");
-//            _search = new DatabaseReader(dbResourceStream);
-            
+            InitSearcher();
+        }
+
+        private void InitSearcher()
+        {
 #if NETSTANDARD2_0
             var dbPath = Path.Combine(AppContext.BaseDirectory, "GeoLite2-City.mmdb");
 #else
@@ -55,7 +56,6 @@ namespace IPTools.International
             {
                 _search = new DatabaseReader(dbPath);
             }
-            
         }
 
         public IpInfo Search(string ip)
@@ -65,27 +65,36 @@ namespace IPTools.International
                 throw new ArgumentException(nameof(ip));
             }
 
-            if (_search.TryCity(ip, out var city))
+            try
             {
-                var ipinfo = new IpInfo
+                if (_search.TryCity(ip, out var city))
                 {
-                    IpAddress = ip,
-                    CountryCode = city.Country.IsoCode,
-                    Country = city.Country.Name,
-                    Province = city.MostSpecificSubdivision.Name,
-                    ProvinceCode = city.MostSpecificSubdivision.IsoCode,
-                    City =city.City.Name,
-                    PostCode = city.Postal.Code,
-                    Latitude = city.Location.Latitude,
-                    Longitude = city.Location.Longitude,
-                    AccuracyRadius = city.Location.AccuracyRadius
-                };
-                return ipinfo;
+                    var ipinfo = new IpInfo
+                    {
+                        IpAddress = ip,
+                        CountryCode = city.Country.IsoCode,
+                        Country = city.Country.Name,
+                        Province = city.MostSpecificSubdivision.Name,
+                        ProvinceCode = city.MostSpecificSubdivision.IsoCode,
+                        City = city.City.Name,
+                        PostCode = city.Postal.Code,
+                        Latitude = city.Location.Latitude,
+                        Longitude = city.Location.Longitude,
+                        AccuracyRadius = city.Location.AccuracyRadius
+                    };
+                    return ipinfo;
+                }
+                else
+                {
+                    return new IpInfo();
+                }
             }
-            else
+            catch (Exception)
             {
+                InitSearcher();
                 return new IpInfo();
             }
+            
             
         }
 
@@ -101,25 +110,33 @@ namespace IPTools.International
                 langCode = IpToolSettings.DefaultLanguage;
             }
 
-            if (_search.TryCity(ip, out var city))
+            try
             {
-                var ipinfo = new IpInfo
+                if (_search.TryCity(ip, out var city))
                 {
-                    IpAddress = ip,
-                    CountryCode = city.Country.IsoCode,
-                    Country = city.Country.Names.ContainsKey(langCode) ? city.Country.Names[langCode] : city.Country.Name,
-                    Province = city.MostSpecificSubdivision.Names.ContainsKey(langCode) ? city.MostSpecificSubdivision.Names[langCode] : city.MostSpecificSubdivision.Name,
-                    ProvinceCode = city.MostSpecificSubdivision.IsoCode,
-                    City = city.City.Names.ContainsKey(langCode) ? city.City.Names[langCode] : city.City.Name,
-                    PostCode = city.Postal.Code,
-                    Latitude = city.Location.Latitude,
-                    Longitude = city.Location.Longitude,
-                    AccuracyRadius = city.Location.AccuracyRadius
-                };
-                return ipinfo;
+                    var ipinfo = new IpInfo
+                    {
+                        IpAddress = ip,
+                        CountryCode = city.Country.IsoCode,
+                        Country = city.Country.Names.ContainsKey(langCode) ? city.Country.Names[langCode] : city.Country.Name,
+                        Province = city.MostSpecificSubdivision.Names.ContainsKey(langCode) ? city.MostSpecificSubdivision.Names[langCode] : city.MostSpecificSubdivision.Name,
+                        ProvinceCode = city.MostSpecificSubdivision.IsoCode,
+                        City = city.City.Names.ContainsKey(langCode) ? city.City.Names[langCode] : city.City.Name,
+                        PostCode = city.Postal.Code,
+                        Latitude = city.Location.Latitude,
+                        Longitude = city.Location.Longitude,
+                        AccuracyRadius = city.Location.AccuracyRadius
+                    };
+                    return ipinfo;
+                }
+                else
+                {
+                    return new IpInfo();
+                }
             }
-            else
+            catch (Exception e)
             {
+                InitSearcher();
                 return new IpInfo();
             }
         }
