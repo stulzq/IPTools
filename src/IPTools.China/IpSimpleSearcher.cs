@@ -32,7 +32,21 @@ namespace IPTools.China
 
         private void InitSearcher()
         {
+#if NETSTANDARD2_0
+            var dbPath = Path.Combine(AppContext.BaseDirectory, "ip2region.db");
+#else
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ip2region.db");
+#endif
+            if (!string.IsNullOrEmpty(IpToolSettings.ChinaDbPath))
+            {
+                dbPath = IpToolSettings.ChinaDbPath;
+            }
+            if (!File.Exists(dbPath))
+            {
+                throw new IpToolException($"IPTools.China initialize failed. Can not find database file from {dbPath}. Please download the file to your application root directory, then set it can be copied to the output directory. Url: https://github.com/stulzq/IPTools/raw/master/db/ip2region.db");
+            }
 
+            _search = new DbSearcher(dbPath);
         }
 
         public IpInfo Search(string ip)
