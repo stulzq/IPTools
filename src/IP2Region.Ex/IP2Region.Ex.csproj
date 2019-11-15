@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net45;net451;net452;net461</TargetFrameworks>
     <PackageProjectUrl>https://github.com/stulzq/IPTools/tree/master/src/IP2Region.Ex</PackageProjectUrl>
     <Description>Add extensions base on https://www.nuget.org/packages/IP2Region/</Description>
-    <Authors>Rocher.Kong,stulzq</Authors>
+    <Authors>Rocher.Kong</Authors>
     <Version>1.2.0</Version>
   </PropertyGroup>
 
