@@ -13,7 +13,7 @@
 // #endregion
 
 
-#if NETSTANDARD2_0
+#if NETCOREAPP3_1
 using Microsoft.AspNetCore.Http;
 #else
 using System.Web;
@@ -25,7 +25,7 @@ namespace IPTools.Core.Extensions
     {
         public static IpInfo GetRemoteIpInfo(this HttpContext context)
         {
-#if NETSTANDARD2_0
+#if NETCOREAPP3_1
             
             return IpTool.Search(context.Connection.RemoteIpAddress.ToString());
 #else

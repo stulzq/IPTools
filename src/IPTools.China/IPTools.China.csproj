@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net451;net452;net461</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net45;net451;net452;net461</TargetFrameworks>
     <Description>Quickly query China IP information, national, provincial, city and network operators. Non China IP can only query national information.Docs: https://github.com/stulzq/IPTools. </Description>
   </PropertyGroup>
 
